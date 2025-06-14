@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -65,6 +65,14 @@ interface Brochure {
 }
 
 export default function TilesPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TilesPageContent />
+    </Suspense>
+  );
+}
+
+function TilesPageContent() {
   const { toast } = useToast();
   const searchParams = useSearchParams();
   const productId = searchParams.get("productId");
