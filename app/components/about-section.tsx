@@ -11,7 +11,7 @@ export default function AboutSection() {
     {
       icon: Globe,
       title: "Global Reach",
-      description: "Exporting to over 50 countries worldwide with trusted partnerships",
+      description: "Exporting to over 65 countries worldwide with trusted partnerships",
     },
     {
       icon: Users,
@@ -31,7 +31,7 @@ export default function AboutSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">About Star Porselano</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            With over 25 years of excellence in the ceramic industry, we are committed to delivering premium porcelain
+            With over 22 years of excellence in the ceramic industry, we are committed to delivering premium porcelain
             tiles and ceramic products that transform spaces worldwide.
           </p>
         </div>
@@ -59,7 +59,7 @@ export default function AboutSection() {
             />
           </div>
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-gray-900">Leading Ceramic Manufacturer Since 1998</h3>
+            <h3 className="text-2xl font-bold text-gray-900">Leading Ceramic Exporter Since 2003</h3>
             <p className="text-gray-600 leading-relaxed">
               Star Porselano has established itself as a premier manufacturer and exporter of porcelain tiles and
               ceramic products. Our state-of-the-art manufacturing facility combines traditional craftsmanship with
@@ -70,7 +70,7 @@ export default function AboutSection() {
               and industrial applications. Our commitment to innovation and quality has made us a trusted partner for
               distributors and contractors worldwide.
             </p>
-            <div className="grid grid-cols-2 gap-4 pt-4">
+            {/* <div className="grid grid-cols-2 gap-4 pt-4">
               <div>
                 <div className="text-2xl font-bold text-blue-600">1M+</div>
                 <div className="text-sm text-gray-600">Sq. Ft. Monthly Production</div>
@@ -79,7 +79,7 @@ export default function AboutSection() {
                 <div className="text-2xl font-bold text-blue-600">99%</div>
                 <div className="text-sm text-gray-600">Customer Satisfaction</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

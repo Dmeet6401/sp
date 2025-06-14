@@ -26,7 +26,7 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-brand-100 to-brand-200">
+    <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">
@@ -45,10 +45,10 @@ export default function WhyChooseUs() {
               className="bg-white shadow-lg hover:shadow-xl border-0 transition-all duration-300 hover:-translate-y-2 group"
             >
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-400 to-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <reason.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-3 group-hover:text-brand transition-colors">
+                <h3 className="text-xl font-semibold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
                   {reason.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">{reason.description}</p>

@@ -114,7 +114,7 @@ export default function Hero() {
                 {/* Main Title */}
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
                   <span className="block">{slides[currentSlide].title.split(" ")[0]}</span>
-                  <span className="block text-brand-300">
+                  <span className="block text-blue-400">
                     {slides[currentSlide].title.split(" ").slice(1).join(" ")}
                   </span>
                 </h1>

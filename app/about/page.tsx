@@ -3,16 +3,16 @@ import Footer from "../components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Award, Globe, Factory, Shield, CheckCircle, Target, Eye, Heart } from "lucide-react"
+import HeroSection from "../components/hero-section"
 
 export default function AboutUs() {
   const milestones = [
-    { year: "1998", event: "Star Porselano founded with a vision to revolutionize ceramic industry" },
-    { year: "2003", event: "Expanded manufacturing facility to 50,000 sq ft" },
+    { year: "2003", event: "Star Porselano founded with a vision to revolutionize ceramic industry" },
     { year: "2008", event: "Started international exports to 15 countries" },
-    { year: "2012", event: "Achieved ISO 9001:2008 certification for quality management" },
-    { year: "2016", event: "Launched digital printing technology for premium tiles" },
+    { year: "2012", event: "Expanded international exports to 35 countries" },
+    { year: "2015", event: "Digital Printing Technology" },
     { year: "2020", event: "Expanded export network to 50+ countries worldwide" },
-    { year: "2024", event: "Celebrating 25+ years of excellence in ceramic manufacturing" },
+    { year: "2025", event: "Celebrating 25+ years of excellence and 65+ Countries exports" },
   ]
 
   const certifications = [
@@ -26,93 +26,54 @@ export default function AboutUs() {
 
   const leadership = [
     {
-      name: "Rajesh Patel",
+      name: "Shailesh Patel",
       position: "Chairman & Managing Director",
       experience: "25+ years",
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Priya Sharma",
-      position: "Executive Director - Operations",
-      experience: "20+ years",
+      name: "Narendra Patel",
+      position: "Partner - Star Brand",
+      experience: "10+ years",
       image: "/placeholder.svg?height=300&width=300",
     },
-    {
-      name: "Amit Kumar",
-      position: "Technical Director",
-      experience: "18+ years",
-      image: "/placeholder.svg?height=300&width=300",
-    },
-    {
-      name: "Neha Gupta",
-      position: "Export Director",
-      experience: "15+ years",
-      image: "/placeholder.svg?height=300&width=300",
-    },
+    // {
+    //   name: "Amit Kumar",
+    //   position: "Technical Director",
+    //   experience: "18+ years",
+    //   image: "/placeholder.svg?height=300&width=300",
+    // },
+    // {
+    //   name: "Neha Gupta",
+    //   position: "Export Director",
+    //   experience: "15+ years",
+    //   image: "/placeholder.svg?height=300&width=300",
+    // },
   ]
 
   return (
     <div className="min-h-screen">
       <Header />
+      <HeroSection
+        title="About Star Porselano"
+        subtitle="Leading the ceramic industry with 22+ years of excellence, innovation, and commitment to quality"
+      />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">About Star Porselano</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Leading the ceramic industry with 25+ years of excellence, innovation, and commitment to quality
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900">Our Story</h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Star Porselano is one of the world's leading tile manufacturers and exporters, recognized for its
-                largest production capacity and extensive global exports. With state-of-the-art technology and
-                high-quality materials, we produce premium ceramic, porcelain, and vitrified tiles that meet
-                international standards.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Our commitment to quality, innovation, and sustainability has made us a trusted name in the tile
-                industry. We supply our products to numerous countries, ensuring excellence in every tile we
-                manufacture.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                If you are looking for a reliable and high-quality tiles supplier, Star Porselano is your perfect
-                partner for world-class tile solutions.
-              </p>
-            </div>
-            <div className="relative">
-              <img
-                src="/placeholder.svg?height=500&width=600"
-                alt="Star Porselano Manufacturing Facility"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Goal */}
+      {/* Our Goal Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
                 src="/placeholder.svg?height=500&width=600"
-                alt="Star Porselano Goal"
+                alt="Star Porselano Vision"
                 className="rounded-2xl shadow-2xl w-full"
               />
             </div>
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Our Goal</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Our goal is to become the world's most trusted and innovative tile brand, delivering superior quality
-                products while embracing eco-friendly practices. We aim to expand our global presence, forge long-term
-                partnerships, and revolutionize the tile industry with cutting-edge technology and exceptional
-                craftsmanship.
+                Our goal is to become the world's most trusted and innovative tile brand, delivering superior quality products while embracing eco-friendly practices. We aim to expand our global presence, forge long-term partnerships, and revolutionize the tile industry with cutting-edge technology and exceptional craftsmanship.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 At Star Porselano, we don't just manufacture tiles – we create lasting impressions.
@@ -128,12 +89,12 @@ export default function AboutUs() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="text-center p-8 hover:shadow-lg transition-shadow">
               <CardContent className="space-y-4">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto">
-                  <Target className="h-8 w-8 text-brand" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                  <Target className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Our Mission</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  To manufacture and supply world-class ceramic and porcelain tiles that exceed customer expectations
+                  Supply world-class ceramic and porcelain tiles that exceed customer expectations
                   through continuous innovation, superior quality, and exceptional service while maintaining
                   environmental sustainability.
                 </p>
@@ -142,8 +103,8 @@ export default function AboutUs() {
 
             <Card className="text-center p-8 hover:shadow-lg transition-shadow">
               <CardContent className="space-y-4">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto">
-                  <Eye className="h-8 w-8 text-brand" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                  <Eye className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -156,8 +117,8 @@ export default function AboutUs() {
 
             <Card className="text-center p-8 hover:shadow-lg transition-shadow">
               <CardContent className="space-y-4">
-                <div className="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto">
-                  <Heart className="h-8 w-8 text-brand" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                  <Heart className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Our Values</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -171,7 +132,7 @@ export default function AboutUs() {
       </section>
 
       {/* Company Milestones */}
-      {/* <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
@@ -202,10 +163,10 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Manufacturing Excellence */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -278,10 +239,10 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Quality & Certifications */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Quality & Certifications</h2>
@@ -327,10 +288,10 @@ export default function AboutUs() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Leadership Team */}
-      {/* <section className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Leadership Team</h2>
@@ -339,7 +300,7 @@ export default function AboutUs() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {leadership.map((leader, index) => (
               <Card key={index} className="text-center overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="aspect-square overflow-hidden">
@@ -358,7 +319,7 @@ export default function AboutUs() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Global Presence */}
       <section className="py-20 bg-blue-600">
@@ -366,26 +327,54 @@ export default function AboutUs() {
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Global Presence</h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Star Porselano products are trusted by customers across 50+ countries worldwide
+              Star Porselano products are trusted by customers across 65+ countries worldwide
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">50+</div>
+              <div className="text-4xl font-bold text-white mb-2">20+</div>
+              <div className="text-blue-100">Products Served</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">65+</div>
               <div className="text-blue-100">Countries Served</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">1000+</div>
-              <div className="text-blue-100">Global Partners</div>
-            </div>
-            <div className="text-center">
+            {/* <div className="text-center">
               <div className="text-4xl font-bold text-white mb-2">5M+</div>
               <div className="text-blue-100">Sq. Ft. Exported Annually</div>
-            </div>
+            </div> */}
             <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">99%</div>
+              <div className="text-4xl font-bold text-white mb-2">90%</div>
               <div className="text-blue-100">Customer Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Star Porselano Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center lg:items-start gap-12">
+          <div className="flex-1 mb-8 lg:mb-0">
+            <div className="uppercase text-sm tracking-widest text-gray-500 mb-2">We Serve</div>
+            <h2 className="text-3xl font-bold text-gray-900 leading-tight">Why Star Porselano</h2>
+          </div>
+          <div className="flex-[2] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full">
+            <div className="border border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center text-center bg-white">
+              <svg className="h-10 w-10 text-blue-900 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v2m6.364 1.636l-1.414 1.414M22 12h-2M19.364 19.364l-1.414-1.414M12 22v-2M4.636 19.364l1.414-1.414M2 12h2M4.636 4.636l1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
+              <div className="font-bold text-base mb-1">LATEST TECHNOLOGY</div>
+            </div>
+            <div className="border border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center text-center bg-white">
+              <svg className="h-10 w-10 text-blue-900 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 12l2 2l4-4M7 17a5 5 0 0010 0V7a5 5 0 00-10 0v10z" /></svg>
+              <div className="font-bold text-base mb-1">QUALITY CONTROL</div>
+            </div>
+            <div className="border border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center text-center bg-white">
+              <svg className="h-10 w-10 text-blue-900 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><circle cx="17" cy="17" r="4" /></svg>
+              <div className="font-bold text-base mb-1">TEAM WORK</div>
+            </div>
+            <div className="border border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center text-center bg-white">
+              <svg className="h-10 w-10 text-blue-900 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 17v-2a4 4 0 014-4h10a4 4 0 014 4v2" /><circle cx="12" cy="7" r="4" /><path d="M16 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2" /></svg>
+              <div className="font-bold text-base mb-1">ON TIME DELIVERY</div>
             </div>
           </div>
         </div>

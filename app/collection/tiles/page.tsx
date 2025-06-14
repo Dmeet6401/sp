@@ -304,64 +304,64 @@ function TilesCollectionContent() {
     },
   ]
 
-  const technicalData = [
-    {
-      property: "Length and width",
-      testMethod: "BS EN ISO 10545-2",
-      isoStandard: "± 0.6%",
-      ourValue: "± 0.3%",
-      isHighlighted: true,
-    },
-    {
-      property: "Thickness",
-      testMethod: "BS EN ISO 10545-2",
-      isoStandard: "± 5.0%",
-      ourValue: "± 3.0%",
-      isHighlighted: false,
-    },
-    {
-      property: "Straightness of sides",
-      testMethod: "BS EN ISO 10545-2",
-      isoStandard: "± 0.5%",
-      ourValue: "± 0.3%",
-      isHighlighted: true,
-    },
-    {
-      property: "Rectangularity",
-      testMethod: "BS EN ISO 10545-2",
-      isoStandard: "± 0.6%",
-      ourValue: "± 0.3%",
-      isHighlighted: false,
-    },
-    {
-      property: "Surface flatness",
-      testMethod: "BS EN ISO 10545-2",
-      isoStandard: "± 0.5%",
-      ourValue: "± 0.3%",
-      isHighlighted: true,
-    },
-    {
-      property: "Water absorption",
-      testMethod: "BS EN ISO 10545-3",
-      isoStandard: "≤ 0.5%",
-      ourValue: "≤ 0.05%",
-      isHighlighted: false,
-    },
-    {
-      property: "Breaking strength",
-      testMethod: "BS EN ISO 10545-4",
-      isoStandard: "≥ 1300N",
-      ourValue: "≥ 1500N",
-      isHighlighted: true,
-    },
-    {
-      property: "Modulus of rupture",
-      testMethod: "BS EN ISO 10545-4",
-      isoStandard: "≥ 35 N/mm²",
-      ourValue: "≥ 45 N/mm²",
-      isHighlighted: false,
-    },
-  ]
+  // const technicalData = [
+  //   {
+  //     property: "Length and width",
+  //     testMethod: "BS EN ISO 10545-2",
+  //     isoStandard: "± 0.6%",
+  //     ourValue: "± 0.3%",
+  //     isHighlighted: true,
+  //   },
+  //   {
+  //     property: "Thickness",
+  //     testMethod: "BS EN ISO 10545-2",
+  //     isoStandard: "± 5.0%",
+  //     ourValue: "± 3.0%",
+  //     isHighlighted: false,
+  //   },
+  //   {
+  //     property: "Straightness of sides",
+  //     testMethod: "BS EN ISO 10545-2",
+  //     isoStandard: "± 0.5%",
+  //     ourValue: "± 0.3%",
+  //     isHighlighted: true,
+  //   },
+  //   {
+  //     property: "Rectangularity",
+  //     testMethod: "BS EN ISO 10545-2",
+  //     isoStandard: "± 0.6%",
+  //     ourValue: "± 0.3%",
+  //     isHighlighted: false,
+  //   },
+  //   {
+  //     property: "Surface flatness",
+  //     testMethod: "BS EN ISO 10545-2",
+  //     isoStandard: "± 0.5%",
+  //     ourValue: "± 0.3%",
+  //     isHighlighted: true,
+  //   },
+  //   {
+  //     property: "Water absorption",
+  //     testMethod: "BS EN ISO 10545-3",
+  //     isoStandard: "≤ 0.5%",
+  //     ourValue: "≤ 0.05%",
+  //     isHighlighted: false,
+  //   },
+  //   {
+  //     property: "Breaking strength",
+  //     testMethod: "BS EN ISO 10545-4",
+  //     isoStandard: "≥ 1300N",
+  //     ourValue: "≥ 1500N",
+  //     isHighlighted: true,
+  //   },
+  //   {
+  //     property: "Modulus of rupture",
+  //     testMethod: "BS EN ISO 10545-4",
+  //     isoStandard: "≥ 35 N/mm²",
+  //     ourValue: "≥ 45 N/mm²",
+  //     isHighlighted: false,
+  //   },
+  // ]
 
 
 
@@ -428,7 +428,7 @@ function TilesCollectionContent() {
                 </svg>
                 SIZES
               </button>
-              <button
+              {/* <button
                 onClick={() => setActiveTab("technical")}
                 className={`flex items-center px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
                   activeTab === "technical"
@@ -440,7 +440,7 @@ function TilesCollectionContent() {
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 TECHNICAL
-              </button>
+              </button> */}
               <button
                 onClick={() => setActiveTab("applications")}
                 className={`flex items-center px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
@@ -660,7 +660,7 @@ function TilesCollectionContent() {
                         </tr>
                       </thead>
                       <tbody>
-                        {technicalData.map((row, index) => (
+                        {/* {technicalData.map((row, index) => (
                           <tr
                             key={index}
                             className={`border-b border-white/20 hover:bg-white/10 transition-colors ${
@@ -672,7 +672,7 @@ function TilesCollectionContent() {
                             <td className="py-4 px-6 text-blue-100">{row.isoStandard}</td>
                             <td className="py-4 px-6 font-semibold text-white">{row.ourValue}</td>
                           </tr>
-                        ))}
+                        ))} */}
                       </tbody>
                     </table>
                   </div>

@@ -11,20 +11,6 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
-  			brand: {
-  				DEFAULT: '#2B4D66', // Main blue-gray from logo
-  				light: '#3A6B8C', // Lighter variation
-  				dark: '#1C3344', // Darker variation
-  				100: '#E6EEF2',
-  				200: '#C2D5DE',
-  				300: '#9EBCCB',
-  				400: '#7AA3B7',
-  				500: '#568AA4',
-  				600: '#2B4D66', // Same as DEFAULT
-  				700: '#1C3344', // Same as dark
-  				800: '#0D1922',
-  				900: '#040A0D'
-  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

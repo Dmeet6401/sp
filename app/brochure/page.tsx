@@ -1,11 +1,29 @@
+"use client"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Download } from "lucide-react"
 import Link from "next/link"
+import HeroSection from "../components/hero-section"
+import { useEffect, useState } from "react"
 
 export default function Brochure() {
+  const [tileSizes, setTileSizes] = useState<{ tile_size_id: number; tile_size_name: string }[]>([])
+
+  useEffect(() => {
+    const fetchTileSizes = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:5000"}/api/tile/get-all-tile-sizes`)
+        const data = await res.json()
+        if (data.tileSizes) setTileSizes(data.tileSizes)
+      } catch (error) {
+        console.error("Failed to fetch tile sizes:", error)
+      }
+    }
+    fetchTileSizes()
+  }, [])
+
   const catalogues = [
     {
       title: '300mmx450mm (12"x18")',
@@ -45,36 +63,17 @@ export default function Brochure() {
     },
   ]
 
-  const catalogueTypes = [
-    '300mmx450mm (12"x18")',
-    '600mmX1200mm (24" X 48")',
-    '600mmX600mm (24" X 24")',
-    "600x600",
-    "Elevation",
-    "Floor Tiles",
-    "Glossy",
-    "GVT/PGVT",
-    "Kitchen",
-    "Nano",
-    "Outdoor Tiles",
-    "Porcelain Tiles",
-    "Wall Tiles",
-    "Wood Look Tiles",
-  ]
-
   return (
     <div className="min-h-screen">
       <Header />
+      <HeroSection
+        title="Brochures & Catalogues"
+        subtitle="Download our product catalogues and brochures to explore our complete collection of premium ceramic and porcelain tiles"
+      />
 
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Brochures & Catalogues</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Download our product catalogues and brochures to explore our complete collection of premium ceramic and
-              porcelain tiles
-            </p>
-          </div>
+       
 
           <div className="grid lg:grid-cols-12 gap-8">
             {/* Catalogue Filter Sidebar */}
@@ -85,17 +84,20 @@ export default function Brochure() {
                 </div>
 
                 <ul className="space-y-3">
-                  {catalogueTypes.map((type, index) => (
-                    <li key={index} className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                      <Link
-                        href={`#${type.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="text-gray-700 hover:text-blue-600"
-                      >
-                        {type}
-                      </Link>
-                    </li>
-                  ))}
+                  {tileSizes.map((size) => {
+                    const trimmedName = size.tile_size_name.trim();
+                    return (
+                      <li key={trimmedName} className="flex items-center">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                        <a
+                          href={`#${trimmedName.toLowerCase().replace(/\s+/g, "-")}`}
+                          className="text-gray-700 hover:text-blue-600"
+                        >
+                          {trimmedName}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
 
                 <div className="mt-8">

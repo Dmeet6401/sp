@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu } from "lucide-react"
+import { Menu, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
@@ -14,7 +14,6 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import Image from "next/image"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,6 +22,8 @@ export default function Header() {
   const [sanitaryTypes, setSanitaryTypes] = useState<{ sanitary_type_id: number; sanitary_type_name: string }[]>([])
   const pathname = usePathname()
   const isHomePage = pathname === "/"
+  const [isCollectionOpen, setIsCollectionOpen] = useState(false)
+  const [isUtilitiesOpen, setIsUtilitiesOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,22 +50,19 @@ export default function Header() {
     fetchTileTypes()
   }, [])
 
-  const fetchSanitaryTypes = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:5000"}/api/sanitary/get-all-sanitary-types`
-      )
-      const data = await res.json()
-      if (data.sanitaryTypes) setSanitaryTypes(data.sanitaryTypes)
-    }
-    catch (error) {
-      console.error("Failed to fetch sanitary types:", error)
-    }
-
-    fetchSanitaryTypes()  
-  }
-
   useEffect(() => {
+    const fetchSanitaryTypes = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:5000"}/api/sanitary/get-sanitary-type`
+        )
+        const data = await res.json()
+        if (data.sanitaryTypes) setSanitaryTypes(data.sanitaryTypes)
+      } catch (error) {
+        console.error("Failed to fetch sanitary types:", error)
+      }
+    }
+
     fetchSanitaryTypes()
   }, [])
 
@@ -82,7 +80,7 @@ export default function Header() {
   }
 
   const textColor = isHomePage ? (isScrolled ? 'text-gray-900' : 'text-white') : 'text-gray-900'
-  const hoverColor = isHomePage ? (isScrolled ? 'hover:text-brand' : 'hover:text-brand-300') : 'hover:text-brand'
+  const hoverColor = isHomePage ? (isScrolled ? 'hover:text-blue-600' : 'hover:text-blue-300') : 'hover:text-blue-600'
   const logoTextColor = isHomePage ? (isScrolled ? 'text-gray-900' : 'text-white') : 'text-gray-900'
 
   return (
@@ -91,18 +89,16 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <Image
-              src="/logo.png"
+            <img
+              src="/Logooo.png"
               alt="Star Porselano Logo"
-              width={48}
-              height={48}
-              className="rounded-lg"
+              className="w-12 h-12 object-contain rounded-lg"
             />
             <span className={`text-2xl font-bold tracking-wide ${logoTextColor}`}>Star Porselano</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
+          <NavigationMenu className="hidden lg:flex" >
             <NavigationMenuList className="space-x-2">
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -126,9 +122,30 @@ export default function Header() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={`px-4 py-2 text-sm font-medium tracking-wide bg-transparent ${textColor} ${hoverColor}`}>
+                  COLLECTION
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="min-w-[220px] max-w-xs bg-white p-4 rounded-lg shadow-lg border border-gray-100">
+                    
+                    <div className="space-y-2">
+                      {tileTypes.map((type) => (
+                        <NavigationMenuLink asChild key={type.tile_type_id}>
+                          <Link
+                            href={`/collection/tiles?type=${slugify(type.tile_type_name)}`}
+                            className="block t  ext-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded px-3 py-1 transition-colors"
+                          >
+                            {type.tile_type_name.toUpperCase()}
+                          </Link>
+                        </NavigationMenuLink>
+                      ))}
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-              {/* <NavigationMenuItem>
+              <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
                     href="/brochure"
@@ -137,7 +154,7 @@ export default function Header() {
                     BROCHURE
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem> */}
+              </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -150,18 +167,29 @@ export default function Header() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              {/* <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link
-                    href="/utilities"
-                    className="px-4 py-2 text-sm font-medium text-white hover:text-blue-300 transition-colors tracking-wide"
-                  >
-                    UTILITIES
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem> */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={`px-4 py-2 text-sm font-medium tracking-wide bg-transparent ${textColor} ${hoverColor}`}>
+                  UTILITIES
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="min-w-[180px] bg-white p-2 rounded-lg shadow-lg border border-gray-100 flex flex-col">
+                    <NavigationMenuLink asChild>
+                      <Link href="/utilities/faq" className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">FAQ</Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link href="/utilities/tiles-laying" className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">TILES LAYING</Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link href="/utilities/packing-details" className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">PACKING DETAILS</Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link href="/utilities/technical-details" className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">TECHNICAL DETAILS</Link>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-              {/* <NavigationMenuItem>
+              <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
                     href="/blogs"
@@ -170,7 +198,7 @@ export default function Header() {
                     BLOGS
                   </Link>
                 </NavigationMenuLink>
-              </NavigationMenuItem> */}
+              </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -208,8 +236,16 @@ export default function Header() {
                 >
                   ABOUT US
                 </Link>
-                <div className="space-y-2">
-                  <span className="text-lg font-medium text-gray-900 tracking-wide">COLLECTION</span>
+                {/* COLLECTION Dropdown */}
+                <button
+                  className="flex items-center justify-between text-lg font-medium text-gray-900 hover:text-blue-600 tracking-wide focus:outline-none"
+                  onClick={() => setIsCollectionOpen((prev) => !prev)}
+                  type="button"
+                >
+                  <span>COLLECTION</span>
+                  <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isCollectionOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isCollectionOpen && (
                   <div className="pl-4 space-y-2">
                     {tileTypes.map((type) => (
                       <Link
@@ -221,15 +257,18 @@ export default function Header() {
                         {type.tile_type_name}
                       </Link>
                     ))}
-                    <Link
-                      href="/collection/ceramics"
-                      className="block text-gray-700 hover:text-blue-600"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Ceramics
-                    </Link>
+                    {sanitaryTypes.map((type) => (
+                      <Link
+                        key={type.sanitary_type_id}
+                        href={`/collection/sanitary/${slugify(type.sanitary_type_name)}`}
+                        className="block text-gray-700 hover:text-blue-600"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {type.sanitary_type_name}
+                      </Link>
+                    ))}
                   </div>
-                </div>
+                )}
                 <Link
                   href="/brochure"
                   className="text-lg font-medium text-gray-900 hover:text-blue-600 tracking-wide"
@@ -244,13 +283,23 @@ export default function Header() {
                 >
                   EXPORT
                 </Link>
-                <Link
-                  href="/utilities"
-                  className="text-lg font-medium text-gray-900 hover:text-blue-600 tracking-wide"
-                  onClick={() => setIsOpen(false)}
+                {/* UTILITIES Dropdown */}
+                <button
+                  className="flex items-center justify-between text-lg font-medium text-gray-900 hover:text-blue-600 tracking-wide focus:outline-none"
+                  onClick={() => setIsUtilitiesOpen((prev) => !prev)}
+                  type="button"
                 >
-                  UTILITIES
-                </Link>
+                  <span>UTILITIES</span>
+                  <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isUtilitiesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isUtilitiesOpen && (
+                  <div className="pl-4 space-y-2">
+                    <Link href="/utilities/faq" className="block text-gray-700 hover:text-blue-600" onClick={() => setIsOpen(false)}>FAQ</Link>
+                    <Link href="/utilities/tiles-laying" className="block text-gray-700 hover:text-blue-600" onClick={() => setIsOpen(false)}>TILES LAYING</Link>
+                    <Link href="/utilities/packing-details" className="block text-gray-700 hover:text-blue-600" onClick={() => setIsOpen(false)}>PACKING DETAILS</Link>
+                    <Link href="/utilities/technical-details" className="block text-gray-700 hover:text-blue-600" onClick={() => setIsOpen(false)}>TECHNICAL DETAILS</Link>
+                  </div>
+                )}
                 <Link
                   href="/blogs"
                   className="text-lg font-medium text-gray-900 hover:text-blue-600 tracking-wide"

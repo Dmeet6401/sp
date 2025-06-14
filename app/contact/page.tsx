@@ -20,6 +20,7 @@ export default function ContactUs() {
     country: "",
     message: "",
   })
+  const [feedback, setFeedback] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -29,11 +30,29 @@ export default function ContactUs() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setFeedback('Your message has been sent successfully!');
+      } else {
+        setFeedback('There was an error submitting your message.');
+      }
+    } catch (error) {
+      setFeedback('An unexpected error occurred. Please try again later.');
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -73,8 +92,9 @@ export default function ContactUs() {
                   <div className="flex items-start space-x-3">
                     <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div className="text-gray-700">
-                      <p>8-A, NATIONAL HIGHWAY,</p>
-                      <p>B/H, VISHAL FURNITURE, MORBI.</p>
+                      <p>Star Plaza, Ground Floor, Shop No.3,
+                      B/h. Vishal Furniture,</p>
+                      <p>8-A, National Highway, MORBI - 363 642</p>
                     </div>
                   </div>
                 </div>
@@ -82,13 +102,13 @@ export default function ContactUs() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                    <span className="text-gray-700">+91 99989 22554</span>
+                    <span className="text-gray-700">+91 99980 22554</span>
                   </div>
 
-                  {/* <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-blue-600 flex-shrink-0" />
                     <span className="text-gray-700">export@starporselano.com</span>
-                  </div> */}
+                  </div>
 
                   <div className="flex items-center space-x-3">
                     <Clock className="h-5 w-5 text-blue-600 flex-shrink-0" />
@@ -101,14 +121,10 @@ export default function ContactUs() {
                   <h4 className="font-semibold text-gray-900 mb-3">Other Departments</h4>
                   <div className="space-y-2 text-sm text-gray-600">
                     <p>
-                      <strong>Sales:</strong> starporselano@gmail.com
+                      <strong>e-mail Us: </strong>starporselano@gmail.com
                     </p>
-                    <p>
-                      <strong>Support:</strong> starporselano@gmail.com
-                    </p>
-                    <p>
-                      <strong>Logistics:</strong> starporselano@gmail.com
-                    </p>
+                    
+                    
                   </div>
                 </div>
               </div>
@@ -208,7 +224,7 @@ export default function ContactUs() {
 
           <div className="bg-gray-200 rounded-lg overflow-hidden" style={{ height: "400px" }}>
             <iframe
-              src=""
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.5684917518806!2d70.86128357476423!3d22.818447723915895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39598dcfbdc39d41%3A0x6ca9f78926f19f81!2sVishal%20Furniture!5e0!3m2!1sen!2sin!4v1749814351191!5m2!1sen!2sin" 
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -228,7 +244,7 @@ export default function ContactUs() {
               <CardContent>
                 <Phone className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-                <p className="text-gray-600 mb-2">+91 99989 22554</p>
+                <p className="text-gray-600 mb-2">+91 985 982 4444</p>
                 <p className="text-sm text-gray-500">Mon - Sat: 10:00 - 20:00 IST</p>
               </CardContent>
             </Card>
@@ -237,7 +253,7 @@ export default function ContactUs() {
               <CardContent>
                 <Mail className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-                <p className="text-gray-600 mb-2">starporselano@gmail.com</p>
+                <p className="text-gray-600 mb-2">export@starporselano.com</p>
                 <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
               </CardContent>
             </Card>
@@ -246,7 +262,7 @@ export default function ContactUs() {
               <CardContent>
                 <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-                <p className="text-gray-600 mb-2">8-A, NATIONAL HIGHWAY, B/H, VISHAL FURNITURE, MORBI.</p>
+                <p className="text-gray-600 mb-2">Star Ceramic Plaza, Gujarat</p>
                 <p className="text-sm text-gray-500">See our showroom collection</p>
               </CardContent>
             </Card>
